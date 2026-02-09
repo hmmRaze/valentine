@@ -101,16 +101,26 @@
     const celebrationGif = "https://media.giphy.com/media/v1.Y2lkPWVjZjA1ZTQ3bnlnczY1NHFmaXh3MnVzdGZkbG5oZ3d6ZW40a2YydHY0OWc5MGd6eiZlcD12MV9naWZzX3NlYXJjaCZjdD1n/GJWtNQDSAQ7u4Xnpj6/giphy.gif";
 
     // Make No button run away inside the box
-    noBtn.addEventListener("mouseenter", () => {
-      const maxX = buttonsBox.clientWidth - noBtn.offsetWidth;
-      const maxY = buttonsBox.clientHeight - noBtn.offsetHeight;
+    function moveNoButton() {
+  const maxX = buttonsBox.clientWidth - noBtn.offsetWidth;
+  const maxY = buttonsBox.clientHeight - noBtn.offsetHeight;
 
-      const x = Math.random() * maxX;
-      const y = Math.random() * maxY;
+  const x = Math.random() * maxX;
+  const y = Math.random() * maxY;
 
-      noBtn.style.left = x + "px";
-      noBtn.style.top = y + "px";
-    });
+  noBtn.style.left = x + "px";
+  noBtn.style.top = y + "px";
+}
+
+// Desktop hover
+noBtn.addEventListener("mouseenter", moveNoButton);
+
+// Mobile touch
+noBtn.addEventListener("touchstart", (e) => {
+  e.preventDefault(); // prevent accidental click
+  moveNoButton();
+});
+
 
     // Yes button click
     yesBtn.addEventListener("click", () => {
