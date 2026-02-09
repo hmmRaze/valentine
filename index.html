@@ -51,12 +51,17 @@
       border: none;
       border-radius: 999px;
       cursor: pointer;
+      transition: transform 0.2s ease;
     }
 
     #yesBtn {
       background: #ff4d88;
       color: white;
       margin-right: 10px;
+    }
+
+    #yesBtn:hover {
+      transform: scale(1.1);
     }
 
     #noBtn {
@@ -92,10 +97,10 @@
     const question = document.getElementById("question");
     const buttonsBox = document.querySelector(".buttons");
 
-    const celebrationGif =
-      "https://media.giphy.com/media/l0MYt5jPR6QX5pnqM/giphy.gif";
+    // Use your celebratory GIF
+    const celebrationGif = "https://media.giphy.com/media/v1.Y2lkPWVjZjA1ZTQ3bnlnczY1NHFmaXh3MnVzdGZkbG5oZ3d6ZW40a2YydHY0OWc5MGd6eiZlcD12MV9naWZzX3NlYXJjaCZjdD1n/GJWtNQDSAQ7u4Xnpj6/giphy.gif";
 
-    // Keep No button inside the buttons box
+    // Make No button run away inside the box
     noBtn.addEventListener("mouseenter", () => {
       const maxX = buttonsBox.clientWidth - noBtn.offsetWidth;
       const maxY = buttonsBox.clientHeight - noBtn.offsetHeight;
@@ -107,10 +112,12 @@
       noBtn.style.top = y + "px";
     });
 
+    // Yes button click
     yesBtn.addEventListener("click", () => {
       question.textContent = "YAY!!! I knew you’d say yes 💖🥹";
       gif.src = celebrationGif;
 
+      // Hide buttons after click
       yesBtn.style.display = "none";
       noBtn.style.display = "none";
     });
