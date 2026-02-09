@@ -112,18 +112,24 @@
     const celebrationGif =
       "https://media.giphy.com/media/v1.Y2lkPTc5MGI3NjExb2Y1dDZ1ZzNyc2ZlY2p3Z2c4aXdkZTd2b3E5b2p4N29hNWt0bCZlcD12MV9naWZzX3NlYXJjaCZjdD1n/l0MYt5jPR6QX5pnqM/giphy.gif";
 
-    // Make "No" button run away
-    noBtn.addEventListener("mouseenter", () => {
-      const padding = 20;
-      const maxX = window.innerWidth - noBtn.offsetWidth - padding;
-      const maxY = window.innerHeight - noBtn.offsetHeight - padding;
+// Make "No" button run away (but stay inside the card)
+noBtn.addEventListener("mouseenter", () => {
+  const container = document.getElementById("card");
+  const containerRect = container.getBoundingClientRect();
+  const buttonRect = noBtn.getBoundingClientRect();
 
-      const x = Math.random() * maxX;
-      const y = Math.random() * maxY;
+  const padding = 10;
 
-      noBtn.style.left = x + "px";
-      noBtn.style.top = y + "px";
-    });
+  const maxX = container.clientWidth - buttonRect.width - padding;
+  const maxY = container.clientHeight - buttonRect.height - padding;
+
+  const x = Math.random() * maxX;
+  const y = Math.random() * maxY;
+
+  noBtn.style.left = x + "px";
+  noBtn.style.top = y + "px";
+});
+
 
     // Yes button behavior
     yesBtn.addEventListener("click", () => {
